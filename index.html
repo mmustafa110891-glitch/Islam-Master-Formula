@@ -70,7 +70,7 @@
         
         <!-- Bismillah Banner -->
         <div class="text-center mb-8 bg-islamic-card/60 border border-islamic-gold/30 p-6 rounded-2xl shadow-xl">
-            <h2 class="arabic-font text-3xl md:text-4xl text-islamic-gold mb-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+            <h2 class="arabic-font text-3xl md:text-4xl text-islamic-gold mb-2">بِسْمِ اللَّهِ الرَّحْمَٰनِ الرَّحِيمِ</h2>
             <p id="bismillah-sub" class="text-sm text-islamic-lightgold/80">Authentic Knowledge Platform powered by strict backend rules enforcement.</p>
         </div>
 
@@ -141,14 +141,6 @@
                         <input type="text" id="hadithSearchInput" placeholder="Enter Hadith topic or text..." class="flex-grow bg-islamic-dark border border-islamic-gold/40 rounded-lg px-4 py-2 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-islamic-gold">
                         <button onclick="runHadithSearch()" id="hv-btn" class="bg-islamic-gold hover:bg-islamic-lightgold text-islamic-dark font-bold px-5 py-2 rounded-lg text-sm transition">Verify</button>
                     </div>
-                </div>
-                <div id="hadithResultArea" class="bg-islamic-card border border-islamic-gold/20 p-6 rounded-xl hidden">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-emerald-900 text-emerald-300 border border-emerald-600 text-xs px-2.5 py-1 rounded font-bold">[SAHIH - Sahih Bukhari]</span>
-                        <span class="text-xs text-gray-400">Formula 13 Compliance Verified</span>
-                    </div>
-                    <p class="text-gray-200 text-sm italic mb-2">"Actions are according to intentions, and everyone will get what was intended..."</p>
-                    <p class="text-xs text-islamic-lightgold">Analysis: Fully authenticated narration matching high-grade compliance checks.</p>
                 </div>
             </div>
 
@@ -327,10 +319,11 @@
             const container = document.getElementById('quranContentArea');
             container.innerHTML = `<p class="text-center text-islamic-lightgold">Loading Surah...</p>`;
             try {
-                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,en.sahih`);
+                // Fetch Hindi translation
+                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,hi.hindi`);
                 const data = await response.json();
                 const arabicVerses = data.data[0].ayahs;
-                const englishVerses = data.data[1].ayahs;
+                const hindiVerses = data.data[1].ayahs;
                 
                 let html = '';
                 for(let i = 0; i < arabicVerses.length; i++) {
@@ -341,7 +334,7 @@
                                 <span>Juz ${arabicVerses[i].juz}</span>
                             </div>
                             <p class="arabic-font text-2xl text-right text-islamic-lightgold">${arabicVerses[i].text}</p>
-                            <p class="text-sm text-gray-200">${englishVerses[i].text}</p>
+                            <p class="text-sm text-gray-200">${hindiVerses[i].text}</p>
                         </div>
                     `;
                 }
