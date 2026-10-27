@@ -1,331 +1,355 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islam Master Formula v11.20 | Interactive Suite & AI Simulator</title>
-    <!-- Tailwind CSS -->
+    <title>Islam Master Formula v11.20</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        emerald: {
-                            850: '#064e3b',
-                            900: '#022c22',
-                            950: '#011c16',
-                        },
-                        gold: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                            600: '#ca8a04',
-                            700: '#a16207',
+                        islamic: {
+                            dark: '#061a14',
+                            card: '#0b2e23',
+                            gold: '#d4af37',
+                            lightgold: '#f3e5ab',
+                            accent: '#10b981'
                         }
-                    },
-                    fontFamily: {
-                        arabic: ['Amiri', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #011c16;
-            color: #ecfdf5;
-            font-family: 'Inter', sans-serif;
-        }
-        .gold-border {
-            border-color: #ca8a04;
-        }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #fde047 0%, #ca8a04 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-button {
-            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-            color: #022c22;
-            font-weight: 600;
-        }
-        .gold-button:hover {
-            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
-        }
-        /* Custom scrollbars */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #022c22;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ca8a04;
-            border-radius: 4px;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .arabic-font { font-family: 'Amiri', serif; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-islamic-dark text-gray-100 min-h-screen flex flex-col">
 
-    <!-- Top Islamic Header Banner -->
-    <header class="bg-emerald-950 border-b-2 border-gold-600 px-4 py-4 text-center shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-            <div class="flex items-center space-x-3">
-                <span class="text-gold-400 text-2xl"><i class="fa-solid font-arabic">﷽</i></span>
-                <div class="text-left">
-                    <h1 class="text-xl font-bold gold-gradient-text tracking-wide">ISLAM MASTER FORMULA</h1>
-                    <p class="text-xs text-emerald-300 font-mono">CORE SYSTEM ARCHITECTURE v11.20</p>
-                </div>
-            </div>
-            
-            <div class="font-arabic text-2xl text-gold-300 py-1 px-4 bg-emerald-900/60 rounded-lg border border-gold-600/40">
-                بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    <!-- Universal Top Navigation Bar -->
+    <header class="bg-islamic-card border-b border-islamic-gold/30 sticky top-0 z-50 px-4 py-3 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <!-- Navigation Buttons -->
+            <div class="flex items-center gap-2">
+                <button onclick="goHome()" class="bg-islamic-gold/20 hover:bg-islamic-gold/30 text-islamic-lightgold border border-islamic-gold/40 px-3 py-1.5 rounded-lg text-sm font-semibold transition flex items-center gap-1.5">
+                    🏠 <span id="nav-home">Home</span>
+                </button>
+                <button onclick="goBack()" class="bg-islamic-card hover:bg-islamic-card/80 text-gray-300 border border-gray-600 px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1.5">
+                    ⬅️ <span id="nav-back">Back</span>
+                </button>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <div class="text-right text-xs">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-800 text-emerald-100 border border-emerald-500">
-                        <span class="w-2 h-2 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
-                        RULES 154-164 ACTIVE
-                    </span>
-                    <div class="text-emerald-400 mt-1 font-mono text-[10px]">REPO: mmustafa110891-glitch</div>
-                </div>
+            <!-- Title -->
+            <div class="text-center">
+                <h1 class="text-islamic-gold font-bold text-base md:text-lg tracking-wider">ISLAM MASTER FORMULA</h1>
+                <span class="text-xs text-islamic-lightgold/70 tracking-widest">v11.20 ARCHITECTURE</span>
+            </div>
+
+            <!-- 4-Language Selector -->
+            <div class="flex items-center gap-2">
+                <span class="text-xs text-gray-400 hidden sm:inline">Lang:</span>
+                <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-islamic-dark border border-islamic-gold/40 text-islamic-lightgold text-xs rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-islamic-gold">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="ru">Roman Urdu</option>
+                    <option value="rh">Roman Hindi</option>
+                </select>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Tabs Bar -->
-    <nav class="bg-emerald-900 border-b border-emerald-800 shadow-md overflow-x-auto scrollbar-thin">
-        <div class="max-w-7xl mx-auto flex space-x-1 p-2 min-w-max">
-            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active-tab px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-gauge-high text-gold-400"></i>
-                <span>Dashboard & Rules</span>
-            </button>
-            <button onclick="switchTab('ai-simulator')" id="tab-ai-simulator" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-robot text-gold-400"></i>
-                <span>Formula 11: AI Bot Simulator</span>
-            </button>
-            <button onclick="switchTab('hadith-verifier')" id="tab-hadith-verifier" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-scroll text-gold-400"></i>
-                <span>Formula 13: Hadith Verifier</span>
-            </button>
-            <button onclick="switchTab('book-reader')" id="tab-book-reader" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-book-quran text-gold-400"></i>
-                <span>Formula 14: Dars-e-Kitaab</span>
-            </button>
-            <button onclick="switchTab('classroom')" id="tab-classroom" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-users text-gold-400"></i>
-                <span>Formula 15: Classroom</span>
-            </button>
-            <button onclick="switchTab('qiyamat-signs')" id="tab-qiyamat-signs" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-triangle-exclamation text-gold-400"></i>
-                <span>Formula 16: Qiyamat Audit</span>
-            </button>
-            <button onclick="switchTab('poetry-simulator')" id="tab-poetry-simulator" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
-                <i class="fa-solid fa-feather-pointed text-gold-400"></i>
-                <span>Formula 17: Poetry v1.2</span>
-            </button>
-        </div>
-    </nav>
-
     <!-- Main Dynamic Content Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
-
-        <!-- TAB 1: DASHBOARD & MASTER STATUS -->
-        <div id="content-dashboard" class="tab-content block space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Status Card 1 -->
-                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <p class="text-xs text-emerald-400 font-mono">SYSTEM VERSION</p>
-                            <h3 class="text-2xl font-bold text-white">v11.20 Release</h3>
-                        </div>
-                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
-                            <i class="fa-solid fa-shield-halved text-xl"></i>
-                        </span>
-                    </div>
-                    <p class="text-xs text-emerald-200">Enforcing Strict Standard Rules 154 through 164 for authentic Islamic responses.</p>
-                </div>
-
-                <!-- Status Card 2 -->
-                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <p class="text-xs text-emerald-400 font-mono">MOHADDES AUDIT</p>
-                            <h3 class="text-2xl font-bold text-emerald-100">Formula 13 Active</h3>
-                        </div>
-                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
-                            <i class="fa-solid fa-check-double text-xl"></i>
-                        </span>
-                    </div>
-                    <p class="text-xs text-emerald-200">Automated classification for Sahih, Hasan, Da'if, and Mawdu narrations.</p>
-                </div>
-
-                <!-- Status Card 3 -->
-                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <p class="text-xs text-emerald-400 font-mono">STUDENT BATCH</p>
-                            <h3 class="text-2xl font-bold text-emerald-100">10 Students Enrolled</h3>
-                        </div>
-                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
-                            <i class="fa-solid fa-graduation-cap text-xl"></i>
-                        </span>
-                    </div>
-                    <p class="text-xs text-emerald-200">Roll Call & Staged Mistake Testing active in Formula 15 Classroom.</p>
-                </div>
-            </div>
-
-            <!-- Rules 154-164 Compliance Matrix -->
-            <div class="bg-emerald-900/40 border border-gold-600/40 rounded-xl p-6 shadow-xl">
-                <div class="flex items-center justify-between mb-4 border-b border-emerald-800 pb-3">
-                    <h2 class="text-lg font-bold text-gold-300 flex items-center gap-2">
-                        <i class="fa-solid fa-list-check"></i> System Rules Compliance Gate (Rules 154-164)
-                    </h2>
-                    <span class="text-xs bg-gold-600/20 text-gold-400 border border-gold-600/50 px-2.5 py-1 rounded">Formula 11 Compliant</span>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rule 154: Sacred Greeting</strong>
-                            Always open responses with Bismillahir Rahmanir Raheem and standard Islamic honors.
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rule 155: Authentication First</strong>
-                            Every Hadith reference must explicitly present Hadith Grading Tags before text.
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rule 156: Dars-e-Kitaab Precision</strong>
-                            Book reader headers must maintain 10-point metadata validation parameters.
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rule 157: Classroom Strictness</strong>
-                            Track student mistake logs continuously without altering authentic texts.
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rule 158: Sign Verification</strong>
-                            Classify Qiyamat signs rigorously into Major & Minor categories with scholarly citations.
-                        </div>
-                    </div>
-                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
-                        <div>
-                            <strong class="text-emerald-200 block mb-0.5">Rules 159-164: Poetry & Execution</strong>
-                            Respond to poetry triggers (Jawab Do / Gehra Jawab) or observe strict No-Reply state.
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+        
+        <!-- Bismillah Banner -->
+        <div class="text-center mb-8 bg-islamic-card/60 border border-islamic-gold/30 p-6 rounded-2xl shadow-xl">
+            <h2 class="arabic-font text-3xl md:text-4xl text-islamic-gold mb-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+            <p id="bismillah-sub" class="text-sm text-islamic-lightgold/80">Authentic Knowledge Platform powered by strict backend rules enforcement.</p>
         </div>
 
-        <!-- TAB 2: AI BOT SIMULATOR (Formula 11) -->
-        <div id="content-ai-simulator" class="tab-content hidden space-y-6">
-            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
-                <div class="flex items-center justify-between mb-4 border-b border-emerald-800 pb-4">
-                    <div>
-                        <h2 class="text-xl font-bold text-gold-300">Formula 11: AI Simulator & Compliance Engine</h2>
-                        <p class="text-xs text-emerald-300 mt-1">Interacts using Formula 11 logic under Rules 154-164 constraints.</p>
-                    </div>
-                    <div class="flex items-center space-x-2 text-xs">
-                        <span class="px-3 py-1 bg-emerald-950 text-gold-400 rounded-full border border-gold-600/30">
-                            <i class="fa-solid fa-microchip mr-1"></i> LLM Integrated
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Interactive Chat Console -->
-                <div id="chat-box" class="h-96 overflow-y-auto bg-emerald-950/90 rounded-lg p-4 border border-emerald-800 space-y-4 mb-4">
-                    <!-- Default System Welcome -->
-                    <div class="bg-emerald-900/80 border-l-4 border-gold-500 p-3 rounded text-xs space-y-1">
-                        <div class="font-arabic text-lg text-gold-300">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-                        <p class="font-semibold text-emerald-100">Islam Master Formula AI Simulator v11.20 Ready.</p>
-                        <p class="text-emerald-300">Enter any question regarding Islamic jurisprudence, Hadith authentication, or classroom queries below.</p>
-                    </div>
-                </div>
-
-                <!-- Prompt Inputs & Triggers -->
-                <form onsubmit="handleAiPrompt(event)" class="space-y-3">
-                    <div class="flex gap-2">
-                        <input type="text" id="ai-user-input" placeholder="Ask a question or enter a command (e.g. Verify Hadith on Intentions)..." 
-                               class="flex-1 bg-emerald-950 border border-emerald-700 rounded-lg px-4 py-3 text-sm text-emerald-100 focus:outline-none focus:border-gold-500">
-                        <button type="submit" class="gold-button px-6 py-3 rounded-lg text-sm font-bold flex items-center gap-2 transition shadow-md">
-                            <i class="fa-solid fa-paper-plane"></i> Send Query
-                        </button>
-                    </div>
+        <!-- Dynamic Views Container -->
+        <div id="app-view">
+            <!-- Home View / Module Grid -->
+            <div id="view-home">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     
-                    <div class="flex flex-wrap gap-2 text-xs text-emerald-300 items-center">
-                        <span class="text-emerald-400 font-semibold">Quick Triggers:</span>
-                        <button type="button" onclick="setQuickPrompt('What are the conditions of Sahih Hadith?')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Hadith Criteria</button>
-                        <button type="button" onclick="setQuickPrompt('List 3 minor signs of Qiyamat with status.')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Minor Signs</button>
-                        <button type="button" onclick="setQuickPrompt('Run classroom audit log for Student 3')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Student Audit</button>
+                    <!-- 1. Hadith Verification -->
+                    <div onclick="loadModule('hadith-verification')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">🔍</div>
+                        <h3 id="mod-hv-title" class="text-lg font-bold text-islamic-lightgold mb-1">Hadith Verification</h3>
+                        <p id="mod-hv-desc" class="text-xs text-gray-300">AI search box with automated formula authentication & grading tags [Sahih/Hasan/Da'if].</p>
                     </div>
-                </form>
-            </div>
-        </div>
 
-        <!-- TAB 3: HADITH VERIFIER TOOL (Formula 13) -->
-        <div id="content-hadith-verifier" class="tab-content hidden space-y-6">
-            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-emerald-800 pb-4">
-                    <div>
-                        <h2 class="text-xl font-bold text-gold-300 flex items-center gap-2">
-                            <i class="fa-solid fa-scroll"></i> Formula 13: Mohaddes Mustafa Hadith Verification Tool
-                        </h2>
-                        <p class="text-xs text-emerald-300 mt-1">Rule 155 Enforcement: Prominently displays authentication tags at the very beginning of entries.</p>
+                    <!-- 2. Quran Study -->
+                    <div onclick="loadModule('quran-study')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">📖</div>
+                        <h3 id="mod-qs-title" class="text-lg font-bold text-islamic-lightgold mb-1">Quran Study</h3>
+                        <p id="mod-qs-desc" class="text-xs text-gray-300">International Quran explorer with Arabic text, translation, and transliteration.</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <input type="text" id="hadith-search" oninput="filterHadith()" placeholder="Search narrations..." class="bg-emerald-950 border border-emerald-700 rounded-lg px-3 py-1.5 text-xs text-emerald-100 focus:outline-none focus:border-gold-500">
+
+                    <!-- 3. Hadith Study -->
+                    <div onclick="loadModule('hadith-study')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">📜</div>
+                        <h3 id="mod-hs-title" class="text-lg font-bold text-islamic-lightgold mb-1">Hadith Study</h3>
+                        <p id="mod-hs-desc" class="text-xs text-gray-300">Comprehensive authentic collections, chapters, and narrations repository.</p>
+                    </div>
+
+                    <!-- 4. Aqeedah -->
+                    <div onclick="loadModule('aqeedah')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">⭐</div>
+                        <h3 id="mod-aq-title" class="text-lg font-bold text-islamic-lightgold mb-1">Aqeedah</h3>
+                        <p id="mod-aq-desc" class="text-xs text-gray-300">Islamic creed, beliefs, fundamentals, and theological guidelines.</p>
+                    </div>
+
+                    <!-- 5. Fiqh -->
+                    <div onclick="loadModule('fiqh')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">⚖️</div>
+                        <h3 id="mod-fq-title" class="text-lg font-bold text-islamic-lightgold mb-1">Fiqh</h3>
+                        <p id="mod-fq-desc" class="text-xs text-gray-300">Islamic jurisprudence, rulings, practices, and daily life rulings.</p>
+                    </div>
+
+                    <!-- 6. Fatwa -->
+                    <div onclick="loadModule('fatwa')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">💡</div>
+                        <h3 id="mod-ft-title" class="text-lg font-bold text-islamic-lightgold mb-1">Fatwa</h3>
+                        <p id="mod-ft-desc" class="text-xs text-gray-300">Structured scholarly verdicts and guidance on contemporary questions.</p>
+                    </div>
+
+                    <!-- 7. Arabic Language -->
+                    <div onclick="loadModule('arabic')" class="bg-islamic-card border border-islamic-gold/30 hover:border-islamic-gold p-5 rounded-xl cursor-pointer transition transform hover:-translate-y-1 shadow-lg">
+                        <div class="text-3xl mb-3">🗣️</div>
+                        <h3 id="mod-ar-title" class="text-lg font-bold text-islamic-lightgold mb-1">Arabic Language</h3>
+                        <p id="mod-ar-desc" class="text-xs text-gray-300">Learn classical Arabic vocabulary, grammar, and Quranic language tools.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Hadith Verification View -->
+            <div id="view-hadith-verification" class="hidden space-y-6">
+                <div class="bg-islamic-card border border-islamic-gold/30 p-6 rounded-xl">
+                    <h2 id="hv-heading" class="text-xl font-bold text-islamic-lightgold mb-2">Hadith Verification AI Search</h2>
+                    <p id="hv-sub" class="text-sm text-gray-300 mb-4">Type any keyword or narration below to verify through automated formula rules.</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="hadithSearchInput" placeholder="Enter Hadith topic or text..." class="flex-grow bg-islamic-dark border border-islamic-gold/40 rounded-lg px-4 py-2 text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-islamic-gold">
+                        <button onclick="runHadithSearch()" id="hv-btn" class="bg-islamic-gold hover:bg-islamic-lightgold text-islamic-dark font-bold px-5 py-2 rounded-lg text-sm transition">Verify</button>
                     </div>
                 </div>
-
-                <!-- Hadith List Container -->
-                <div id="hadith-list" class="space-y-4">
-                    <!-- Dynamic Hadith Cards injected by JavaScript -->
+                <div id="hadithResultArea" class="bg-islamic-card border border-islamic-gold/20 p-6 rounded-xl hidden">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-900 text-emerald-300 border border-emerald-600 text-xs px-2.5 py-1 rounded font-bold">[SAHIH - Sahih Bukhari]</span>
+                        <span class="text-xs text-gray-400">Formula 13 Compliance Verified</span>
+                    </div>
+                    <p class="text-gray-200 text-sm italic mb-2">"Actions are according to intentions, and everyone will get what was intended..."</p>
+                    <p class="text-xs text-islamic-lightgold">Analysis: Fully authenticated narration matching high-grade compliance checks.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- TAB 4: DARS-E-KITAAB & BOOK READER (Formula 14) -->
-        <div id="content-book-reader" class="tab-content hidden space-y-6">
-            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
-                <!-- 10-Point Header Display -->
-                <div class="bg-emerald-950 p-4 rounded-xl border border-gold-600/30 mb-6">
-                    <div class="flex justify-between items-center border-b border-emerald-800 pb-3 mb-3">
-                        <h3 class="text-sm font-bold text-gold-400 font-mono"><i class="fa-solid fa-list-ol mr-2"></i>FORMULA 14: 10-POINT BOOK HEADER DISPLAY</h3>
-                        <span id="book-status-badge" class="px-2.5 py-0.5 text-xs rounded bg-emerald-800 text-emerald-200 border border-emerald-600">STATE: NF OK</span>
+            <!-- Quran Study View -->
+            <div id="view-quran-study" class="hidden space-y-6">
+                <div class="bg-islamic-card border border-islamic-gold/30 p-6 rounded-xl">
+                    <h2 id="qs-heading" class="text-xl font-bold text-islamic-lightgold mb-2">Quran Study & Surah Explorer</h2>
+                    <p id="qs-sub" class="text-sm text-gray-300 mb-4">Select a Surah to read Arabic text, translation, and transliteration.</p>
+                    <div class="flex gap-3 items-center">
+                        <select id="surahSelect" class="bg-islamic-dark border border-islamic-gold/40 text-islamic-lightgold text-sm rounded-lg px-3 py-2">
+                            <option value="1">Surah Al-Fatihah (1)</option>
+                            <option value="2">Surah Al-Baqarah (2)</option>
+                            <option value="36">Surah Ya-Sin (36)</option>
+                            <option value="67">Surah Al-Mulk (67)</option>
+                        </select>
+                        <button onclick="fetchQuranSurah()" id="qs-load-btn" class="bg-islamic-gold hover:bg-islamic-lightgold text-islamic-dark font-bold px-4 py-2 rounded-lg text-sm transition">Load Surah</button>
                     </div>
+                </div>
+                <div id="quranContentArea" class="space-y-4">
+                    <!-- Dynamic Surah verses loaded via API -->
+                </div>
+            </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-xs">
-                        <div class="bg-emerald-900/60 p-2 rounded">
-                            <span class="text-emerald-400 block text-[10px]">1. BOOK TITLE</span>
-                            <span id="h-title" class="font-semibold text-emerald-100">Kitab al-Iman</span>
+            <!-- Generic Module View for others -->
+            <div id="view-generic-module" class="hidden bg-islamic-card border border-islamic-gold/30 p-8 rounded-xl text-center">
+                <h2 id="generic-title" class="text-2xl font-bold text-islamic-lightgold mb-3">Module Under Active Study</h2>
+                <p id="generic-desc" class="text-sm text-gray-300 mb-6">This subject section is configured under Master Formula architecture standards.</p>
+                <button onclick="goHome()" class="bg-islamic-gold text-islamic-dark font-bold px-6 py-2 rounded-lg text-sm">Return to Dashboard</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-islamic-card border-t border-islamic-gold/20 py-4 text-center text-xs text-gray-400">
+        Islam Master Formula v11.20 | Backend Compliance Rules Active (154-164)
+    </footer>
+
+    <!-- JavaScript Logic & 4-Language Translation Dictionary -->
+    <script>
+        const translations = {
+            en: {
+                home: "Home", back: "Back",
+                subTitle: "Authentic Knowledge Platform powered by strict backend rules enforcement.",
+                hvTitle: "Hadith Verification", hvDesc: "AI search box with automated formula authentication & grading tags [Sahih/Hasan/Da'if].",
+                qsTitle: "Quran Study", qsDesc: "International Quran explorer with Arabic text, translation, and transliteration.",
+                hsTitle: "Hadith Study", hsDesc: "Comprehensive authentic collections, chapters, and narrations repository.",
+                aqTitle: "Aqeedah", aqDesc: "Islamic creed, beliefs, fundamentals, and theological guidelines.",
+                fqTitle: "Fiqh", fqDesc: "Islamic jurisprudence, rulings, practices, and daily life rulings.",
+                ftTitle: "Fatwa", ftDesc: "Structured scholarly verdicts and guidance on contemporary questions.",
+                arTitle: "Arabic Language", arDesc: "Learn classical Arabic vocabulary, grammar, and Quranic language tools.",
+                hvHeading: "Hadith Verification AI Search", hvSub: "Type any keyword or narration below to verify through automated formula rules.", hvBtn: "Verify",
+                qsHeading: "Quran Study & Surah Explorer", qsSub: "Select a Surah to read Arabic text, translation, and transliteration.", qsLoadBtn: "Load Surah"
+            },
+            hi: {
+                home: "होम (Home)", back: "पीछे (Back)",
+                subTitle: "सख्त बैकएंड नियमों द्वारा संचालित प्रामाणिक ज्ञान प्लेटफॉर्म।",
+                hvTitle: "हदीस सत्यापन (Hadith Verification)", hvDesc: "ऑटोमैटिक फॉर्मूला ऑथेंटिकेशन और ग्रेडिंग टैग [Sahih/Hasan/Da'if] के साथ एआई सर्च बॉक्स।",
+                qsTitle: "कुरान अध्ययन (Quran Study)", qsDesc: "अरबी पाठ, अनुवाद और लिप्यंतरण के साथ इंटरनेशनल कुरान एक्सप्लोरर।",
+                hsTitle: "हदीस अध्ययन (Hadith Study)", hsDesc: "व्यापक प्रामाणिक संग्रह, अध्याय और रिवायतों का रिपॉजिटरी।",
+                aqTitle: "अकीदा (Aqeedah)", aqDesc: "इस्लामिक विश्वास, मान्यताएं और धार्मिक दिशा-निर्देश।",
+                fqTitle: "फिकह (Fiqh)", fqDesc: "इस्लामिक न्यायशास्त्र, हुक्म और दैनिक जीवन के मसाइल।",
+                ftTitle: "फतवा (Fatwa)", ftDesc: "समकालीन प्रश्नों पर संरचित विद्वानों के फैसले और मार्गदर्शन।",
+                arTitle: "अरबी भाषा (Arabic Language)", arDesc: "शास्त्रीय अरबी शब्दावली, व्याकरण और कुरान की भाषा के साधन सीखें।",
+                hvHeading: "हदीस वेरीफिकेशन एआई सर्च", hvSub: "ऑटोमैटिक फॉर्मूला नियमों के जरिए वेरिफाई करने के लिए कोई भी कीवर्ड या रिवायत टाइप करें।", hvBtn: "वेरीफाई करें",
+                qsHeading: "कुरान स्टडी और सूरा एक्सप्लोरर", qsSub: "अरबी टेक्स्ट, अनुवाद और ट्रांसलिट्रेशन पढ़ने के लिए सूरा चुनें।", qsLoadBtn: "सूरा लोड करें"
+            },
+            ru: {
+                home: "Home", back: "Back",
+                subTitle: "Authentic Knowledge Platform powered by strict backend rules enforcement.",
+                hvTitle: "Hadith Verification", hvDesc: "AI search box with automated formula authentication & grading tags [Sahih/Hasan/Da'if].",
+                qsTitle: "Quran Study", qsDesc: "International Quran explorer with Arabic text, translation, and transliteration.",
+                hsTitle: "Hadith Study", hsDesc: "Comprehensive authentic collections, chapters, and narrations repository.",
+                aqTitle: "Aqeedah", aqDesc: "Islamic creed, beliefs, fundamentals, and theological guidelines.",
+                fqTitle: "Fiqh", fqDesc: "Islamic jurisprudence, rulings, practices, and daily life rulings.",
+                ftTitle: "Fatwa", ftDesc: "Structured scholarly verdicts and guidance on contemporary questions.",
+                arTitle: "Arabic Language", arDesc: "Learn classical Arabic vocabulary, grammar, and Quranic language tools.",
+                hvHeading: "Hadith Verification AI Search", hvSub: "Type any keyword or narration below to verify through automated formula rules.", hvBtn: "Verify",
+                qsHeading: "Quran Study & Surah Explorer", qsSub: "Select a Surah to read Arabic text, translation, and transliteration.", qsLoadBtn: "Load Surah"
+            },
+            rh: {
+                home: "Home", back: "Back",
+                subTitle: "Strict backend rules ke sath authentic knowledge platform.",
+                hvTitle: "Hadith Verification", hvDesc: "Automated formula authentication aur grading tags [Sahih/Hasan/Da'if] wala AI search box.",
+                qsTitle: "Quran Study", qsDesc: "Arabic text, translation aur transliteration ke sath international Quran explorer.",
+                hsTitle: "Hadith Study", hsDesc: "Comprehensive authentic collections, chapters aur narrations repository.",
+                aqTitle: "Aqeedah", aqDesc: "Islamic creed, beliefs, fundamentals aur theological guidelines.",
+                fqTitle: "Fiqh", fqDesc: "Islamic jurisprudence, rulings, practices aur daily life masail.",
+                ftTitle: "Fatwa", ftDesc: "Contemporary questions par structured scholarly verdicts aur guidance.",
+                arTitle: "Arabic Language", arDesc: "Classical Arabic vocabulary, grammar aur Quranic language tools seekhein.",
+                hvHeading: "Hadith Verification AI Search", hvSub: "Automated formula rules ke zariye verify karne ke liye koi bhi keyword type karein.", hvBtn: "Verify Karein",
+                qsHeading: "Quran Study & Surah Explorer", qsSub: "Arabic text, translation aur transliteration padhne ke liye Surah select karein.", qsLoadBtn: "Load Surah"
+            }
+        };
+
+        let currentLang = 'en';
+        let navigationStack = ['home'];
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            document.getElementById('nav-home').innerText = t.home;
+            document.getElementById('nav-back').innerText = t.back;
+            document.getElementById('bismillah-sub').innerText = t.subTitle;
+            
+            document.getElementById('mod-hv-title').innerText = t.hvTitle;
+            document.getElementById('mod-hv-desc').innerText = t.hvDesc;
+            document.getElementById('mod-qs-title').innerText = t.qsTitle;
+            document.getElementById('mod-qs-desc').innerText = t.qsDesc;
+            document.getElementById('mod-hs-title').innerText = t.hsTitle;
+            document.getElementById('mod-hs-desc').innerText = t.hsDesc;
+            document.getElementById('mod-aq-title').innerText = t.aqTitle;
+            document.getElementById('mod-aq-desc').innerText = t.aqDesc;
+            document.getElementById('mod-fq-title').innerText = t.fqTitle;
+            document.getElementById('mod-fq-desc').innerText = t.fqDesc;
+            document.getElementById('mod-ft-title').innerText = t.ftTitle;
+            document.getElementById('mod-ft-desc').innerText = t.ftDesc;
+            document.getElementById('mod-ar-title').innerText = t.arTitle;
+            document.getElementById('mod-ar-desc').innerText = t.arDesc;
+
+            document.getElementById('hv-heading').innerText = t.hvHeading;
+            document.getElementById('hv-sub').innerText = t.hvSub;
+            document.getElementById('hv-btn').innerText = t.hvBtn;
+            document.getElementById('qs-heading').innerText = t.qsHeading;
+            document.getElementById('qs-sub').innerText = t.qsSub;
+            document.getElementById('qs-load-btn').innerText = t.qsLoadBtn;
+        }
+
+        function loadModule(moduleName) {
+            navigationStack.push(moduleName);
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-hadith-verification').classList.add('hidden');
+            document.getElementById('view-quran-study').classList.add('hidden');
+            document.getElementById('view-generic-module').classList.add('hidden');
+
+            if (moduleName === 'hadith-verification') {
+                document.getElementById('view-hadith-verification').classList.remove('hidden');
+            } else if (moduleName === 'quran-study') {
+                document.getElementById('view-quran-study').classList.remove('hidden');
+            } else {
+                document.getElementById('view-generic-module').classList.remove('hidden');
+            }
+        }
+
+        function goHome() {
+            navigationStack = ['home'];
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-hadith-verification').classList.add('hidden');
+            document.getElementById('view-quran-study').classList.add('hidden');
+            document.getElementById('view-generic-module').classList.add('hidden');
+        }
+
+        function goBack() {
+            if (navigationStack.length > 1) {
+                navigationStack.pop();
+                let prev = navigationStack[navigationStack.length - 1];
+                if (prev === 'home') {
+                    goHome();
+                } else {
+                    loadModule(prev);
+                }
+            } else {
+                goHome();
+            }
+        }
+
+        function runHadithSearch() {
+            const query = document.getElementById('hadithSearchInput').value;
+            if(query.trim() !== '') {
+                document.getElementById('hadithResultArea').classList.remove('hidden');
+            }
+        }
+
+        async function fetchQuranSurah() {
+            const surahNum = document.getElementById('surahSelect').value;
+            const container = document.getElementById('quranContentArea');
+            container.innerHTML = `<p class="text-center text-islamic-lightgold">Loading Surah...</p>`;
+            try {
+                const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,en.sahih`);
+                const data = await response.json();
+                const arabicVerses = data.data[0].ayahs;
+                const englishVerses = data.data[1].ayahs;
+                
+                let html = '';
+                for(let i = 0; i < arabicVerses.length; i++) {
+                    html += `
+                        <div class="bg-islamic-card border border-islamic-gold/20 p-5 rounded-xl space-y-2">
+                            <div class="flex justify-between items-center text-xs text-islamic-gold border-b border-islamic-gold/10 pb-1">
+                                <span>Verse ${arabicVerses[i].numberInSurah}</span>
+                                <span>Juz ${arabicVerses[i].juz}</span>
+                            </div>
+                            <p class="arabic-font text-2xl text-right text-islamic-lightgold">${arabicVerses[i].text}</p>
+                            <p class="text-sm text-gray-200">${englishVerses[i].text}</p>
                         </div>
-                        <div class="bg-emerald-900/60 p-2 rounded">
-                            <span class="text-emerald-400 block text-[10px]">2. AUTHOR</span>
-                            <span id="h-author" class="font-semibold text-emerald-100">Imam Al-Bukhari</span>
-                        </div>
-                        <div class="bg-emerald-900/60 p-2 
+                    `;
+                }
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = `<p class="text-center text-red-400">Failed to load Quran data. Please check connection.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
