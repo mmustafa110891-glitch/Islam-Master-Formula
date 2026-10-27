@@ -1,0 +1,331 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam Master Formula v11.20 | Interactive Suite & AI Simulator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#064e3b',
+                            900: '#022c22',
+                            950: '#011c16',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Amiri', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #011c16;
+            color: #ecfdf5;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-border {
+            border-color: #ca8a04;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fde047 0%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-button {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: #022c22;
+            font-weight: 600;
+        }
+        .gold-button:hover {
+            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #022c22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ca8a04;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Islamic Header Banner -->
+    <header class="bg-emerald-950 border-b-2 border-gold-600 px-4 py-4 text-center shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <span class="text-gold-400 text-2xl"><i class="fa-solid font-arabic">﷽</i></span>
+                <div class="text-left">
+                    <h1 class="text-xl font-bold gold-gradient-text tracking-wide">ISLAM MASTER FORMULA</h1>
+                    <p class="text-xs text-emerald-300 font-mono">CORE SYSTEM ARCHITECTURE v11.20</p>
+                </div>
+            </div>
+            
+            <div class="font-arabic text-2xl text-gold-300 py-1 px-4 bg-emerald-900/60 rounded-lg border border-gold-600/40">
+                بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="text-right text-xs">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-800 text-emerald-100 border border-emerald-500">
+                        <span class="w-2 h-2 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                        RULES 154-164 ACTIVE
+                    </span>
+                    <div class="text-emerald-400 mt-1 font-mono text-[10px]">REPO: mmustafa110891-glitch</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs Bar -->
+    <nav class="bg-emerald-900 border-b border-emerald-800 shadow-md overflow-x-auto scrollbar-thin">
+        <div class="max-w-7xl mx-auto flex space-x-1 p-2 min-w-max">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active-tab px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-gauge-high text-gold-400"></i>
+                <span>Dashboard & Rules</span>
+            </button>
+            <button onclick="switchTab('ai-simulator')" id="tab-ai-simulator" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-robot text-gold-400"></i>
+                <span>Formula 11: AI Bot Simulator</span>
+            </button>
+            <button onclick="switchTab('hadith-verifier')" id="tab-hadith-verifier" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-scroll text-gold-400"></i>
+                <span>Formula 13: Hadith Verifier</span>
+            </button>
+            <button onclick="switchTab('book-reader')" id="tab-book-reader" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-book-quran text-gold-400"></i>
+                <span>Formula 14: Dars-e-Kitaab</span>
+            </button>
+            <button onclick="switchTab('classroom')" id="tab-classroom" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-users text-gold-400"></i>
+                <span>Formula 15: Classroom</span>
+            </button>
+            <button onclick="switchTab('qiyamat-signs')" id="tab-qiyamat-signs" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-triangle-exclamation text-gold-400"></i>
+                <span>Formula 16: Qiyamat Audit</span>
+            </button>
+            <button onclick="switchTab('poetry-simulator')" id="tab-poetry-simulator" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-medium flex items-center space-x-2 transition">
+                <i class="fa-solid fa-feather-pointed text-gold-400"></i>
+                <span>Formula 17: Poetry v1.2</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+        <!-- TAB 1: DASHBOARD & MASTER STATUS -->
+        <div id="content-dashboard" class="tab-content block space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Status Card 1 -->
+                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-xs text-emerald-400 font-mono">SYSTEM VERSION</p>
+                            <h3 class="text-2xl font-bold text-white">v11.20 Release</h3>
+                        </div>
+                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </span>
+                    </div>
+                    <p class="text-xs text-emerald-200">Enforcing Strict Standard Rules 154 through 164 for authentic Islamic responses.</p>
+                </div>
+
+                <!-- Status Card 2 -->
+                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-xs text-emerald-400 font-mono">MOHADDES AUDIT</p>
+                            <h3 class="text-2xl font-bold text-emerald-100">Formula 13 Active</h3>
+                        </div>
+                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
+                            <i class="fa-solid fa-check-double text-xl"></i>
+                        </span>
+                    </div>
+                    <p class="text-xs text-emerald-200">Automated classification for Sahih, Hasan, Da'if, and Mawdu narrations.</p>
+                </div>
+
+                <!-- Status Card 3 -->
+                <div class="bg-emerald-900/60 border border-gold-600/30 rounded-xl p-5 shadow-lg">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-xs text-emerald-400 font-mono">STUDENT BATCH</p>
+                            <h3 class="text-2xl font-bold text-emerald-100">10 Students Enrolled</h3>
+                        </div>
+                        <span class="p-3 bg-emerald-800/60 rounded-lg text-gold-400 border border-gold-600/30">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </span>
+                    </div>
+                    <p class="text-xs text-emerald-200">Roll Call & Staged Mistake Testing active in Formula 15 Classroom.</p>
+                </div>
+            </div>
+
+            <!-- Rules 154-164 Compliance Matrix -->
+            <div class="bg-emerald-900/40 border border-gold-600/40 rounded-xl p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-4 border-b border-emerald-800 pb-3">
+                    <h2 class="text-lg font-bold text-gold-300 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> System Rules Compliance Gate (Rules 154-164)
+                    </h2>
+                    <span class="text-xs bg-gold-600/20 text-gold-400 border border-gold-600/50 px-2.5 py-1 rounded">Formula 11 Compliant</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rule 154: Sacred Greeting</strong>
+                            Always open responses with Bismillahir Rahmanir Raheem and standard Islamic honors.
+                        </div>
+                    </div>
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rule 155: Authentication First</strong>
+                            Every Hadith reference must explicitly present Hadith Grading Tags before text.
+                        </div>
+                    </div>
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rule 156: Dars-e-Kitaab Precision</strong>
+                            Book reader headers must maintain 10-point metadata validation parameters.
+                        </div>
+                    </div>
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rule 157: Classroom Strictness</strong>
+                            Track student mistake logs continuously without altering authentic texts.
+                        </div>
+                    </div>
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rule 158: Sign Verification</strong>
+                            Classify Qiyamat signs rigorously into Major & Minor categories with scholarly citations.
+                        </div>
+                    </div>
+                    <div class="p-3 bg-emerald-950/80 rounded border border-emerald-800 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-emerald-200 block mb-0.5">Rules 159-164: Poetry & Execution</strong>
+                            Respond to poetry triggers (Jawab Do / Gehra Jawab) or observe strict No-Reply state.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: AI BOT SIMULATOR (Formula 11) -->
+        <div id="content-ai-simulator" class="tab-content hidden space-y-6">
+            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-4 border-b border-emerald-800 pb-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gold-300">Formula 11: AI Simulator & Compliance Engine</h2>
+                        <p class="text-xs text-emerald-300 mt-1">Interacts using Formula 11 logic under Rules 154-164 constraints.</p>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span class="px-3 py-1 bg-emerald-950 text-gold-400 rounded-full border border-gold-600/30">
+                            <i class="fa-solid fa-microchip mr-1"></i> LLM Integrated
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Interactive Chat Console -->
+                <div id="chat-box" class="h-96 overflow-y-auto bg-emerald-950/90 rounded-lg p-4 border border-emerald-800 space-y-4 mb-4">
+                    <!-- Default System Welcome -->
+                    <div class="bg-emerald-900/80 border-l-4 border-gold-500 p-3 rounded text-xs space-y-1">
+                        <div class="font-arabic text-lg text-gold-300">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                        <p class="font-semibold text-emerald-100">Islam Master Formula AI Simulator v11.20 Ready.</p>
+                        <p class="text-emerald-300">Enter any question regarding Islamic jurisprudence, Hadith authentication, or classroom queries below.</p>
+                    </div>
+                </div>
+
+                <!-- Prompt Inputs & Triggers -->
+                <form onsubmit="handleAiPrompt(event)" class="space-y-3">
+                    <div class="flex gap-2">
+                        <input type="text" id="ai-user-input" placeholder="Ask a question or enter a command (e.g. Verify Hadith on Intentions)..." 
+                               class="flex-1 bg-emerald-950 border border-emerald-700 rounded-lg px-4 py-3 text-sm text-emerald-100 focus:outline-none focus:border-gold-500">
+                        <button type="submit" class="gold-button px-6 py-3 rounded-lg text-sm font-bold flex items-center gap-2 transition shadow-md">
+                            <i class="fa-solid fa-paper-plane"></i> Send Query
+                        </button>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 text-xs text-emerald-300 items-center">
+                        <span class="text-emerald-400 font-semibold">Quick Triggers:</span>
+                        <button type="button" onclick="setQuickPrompt('What are the conditions of Sahih Hadith?')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Hadith Criteria</button>
+                        <button type="button" onclick="setQuickPrompt('List 3 minor signs of Qiyamat with status.')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Minor Signs</button>
+                        <button type="button" onclick="setQuickPrompt('Run classroom audit log for Student 3')" class="bg-emerald-800/60 hover:bg-emerald-800 border border-emerald-700 rounded px-2.5 py-1">Student Audit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 3: HADITH VERIFIER TOOL (Formula 13) -->
+        <div id="content-hadith-verifier" class="tab-content hidden space-y-6">
+            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-emerald-800 pb-4">
+                    <div>
+                        <h2 class="text-xl font-bold text-gold-300 flex items-center gap-2">
+                            <i class="fa-solid fa-scroll"></i> Formula 13: Mohaddes Mustafa Hadith Verification Tool
+                        </h2>
+                        <p class="text-xs text-emerald-300 mt-1">Rule 155 Enforcement: Prominently displays authentication tags at the very beginning of entries.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="hadith-search" oninput="filterHadith()" placeholder="Search narrations..." class="bg-emerald-950 border border-emerald-700 rounded-lg px-3 py-1.5 text-xs text-emerald-100 focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <!-- Hadith List Container -->
+                <div id="hadith-list" class="space-y-4">
+                    <!-- Dynamic Hadith Cards injected by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: DARS-E-KITAAB & BOOK READER (Formula 14) -->
+        <div id="content-book-reader" class="tab-content hidden space-y-6">
+            <div class="bg-emerald-900/50 border border-gold-600/40 rounded-xl p-6 shadow-xl">
+                <!-- 10-Point Header Display -->
+                <div class="bg-emerald-950 p-4 rounded-xl border border-gold-600/30 mb-6">
+                    <div class="flex justify-between items-center border-b border-emerald-800 pb-3 mb-3">
+                        <h3 class="text-sm font-bold text-gold-400 font-mono"><i class="fa-solid fa-list-ol mr-2"></i>FORMULA 14: 10-POINT BOOK HEADER DISPLAY</h3>
+                        <span id="book-status-badge" class="px-2.5 py-0.5 text-xs rounded bg-emerald-800 text-emerald-200 border border-emerald-600">STATE: NF OK</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-xs">
+                        <div class="bg-emerald-900/60 p-2 rounded">
+                            <span class="text-emerald-400 block text-[10px]">1. BOOK TITLE</span>
+                            <span id="h-title" class="font-semibold text-emerald-100">Kitab al-Iman</span>
+                        </div>
+                        <div class="bg-emerald-900/60 p-2 rounded">
+                            <span class="text-emerald-400 block text-[10px]">2. AUTHOR</span>
+                            <span id="h-author" class="font-semibold text-emerald-100">Imam Al-Bukhari</span>
+                        </div>
+                        <div class="bg-emerald-900/60 p-2 
